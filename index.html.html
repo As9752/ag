@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Scientific Calculator</title>
+</head>
+<script type="text/javascript">
+    function myclick(a){
+        myform.display.value+=a;
+    }
+    function equalto(){
+        myform.display.value=eval(myform.display.value);
+    }
+    function ac(){
+        myform.display.value="0";
+    }
+    function backspace(){
+        var prevval=myform.display.value;
+        myform.display.value=prevval.substr(0,prevval.length-1);
+    }
+    function sinf()
+    {
+        myform.display.value=Math.sin(myform.display.value);
+    }
+    function cosf()
+    {
+        myform.display.value=Math.cos(myform.display.value);
+    }
+    function tanf()
+    {
+        myform.display.value=Math.tan(myform.display.value);
+    }
+    function square(){
+        myform.display.value=Math.pow(myform.display.value,2);
+    }
+    function squareroot(){
+        myform.display.value=Math.pow(myform.display.value,1/2);
+    }
+    function p1(){
+        myform.display.value="(";
+    }
+    function p2(){
+        myform.display.value=")";
+    }
+    function log(){
+        var curr=myform.display.value;
+        myform.display.value=Math.log10(curr);
+    }
+    function ln()
+    {
+        var curr=myform.display.value;
+        myform.display.value=Math.log(curr);
+    }
+    function rad()
+    {
+        var temp=myform.display.value;
+        var curr=(180/3.14)*temp;
+        myform.display.value=curr;
+    }
+    function fact(){
+        var temp=myform.display.value;
+        let ans=1;
+        if(temp==1||temp==0)
+        ans=1;
+        else
+        {
+            for(var i=1;i<=temp;i++)
+            ans =ans*i;
+            // myform.display.value=char;
+        }
+        myform.display.value=ans;
+    }
+    function deg()
+    {
+        var temp=myform.display.value;
+        var curr= (3.14/180)*temp;;
+        myform.display.value=curr;
+    }
+    function pi(){
+        myform.display.value="3.141592653589793238462643";
+    }
+    function percentage(){
+        var temp=myform.display.value;
+        var char=temp*100;
+        myform.display.value=char;
+    }
+
+</script>
+<body>
+    <div class="center">
+<form name="myform" class="for">
+    <!-- <input name="display">  -->
+    <input type="text" name="display"><br>
+    <input type="button" name="btnsin" value="sin" onclick="sinf()">
+    <input type="button" name="btncos" value="cos" onclick="cosf()">
+    <input type="button" name="btntan" value="tan" onclick="tanf()">
+    <input type="button" name="btnsqr" value="^2" onclick="square()">
+    <input type="button" name="btnsqrt" value="&#8730" onclick="squareroot()"><br>
+    <input type="button" name="btn9" value="9" onclick="myclick('9')">
+    <input type="button" name="btn8" value="8" onclick="myclick('8')">
+    <input type="button" name="btn7" value="7" onclick="myclick('7')">
+    <input type ="button" name="btndel" value="DEL" onclick="backspace()">
+    <input type="button" name="btnAC" value="AC" onclick="ac()"><br>
+    <input type="button" name="btn6" value="6" onclick="myclick('6')">
+    <input type="button" name="btn5" value="5" onclick="myclick('5')">
+    <input type="button" name="btn4" value="4" onclick="myclick('4')">
+    <input type ="button" name="btnadd" value="+" onclick="myclick('+')">
+    <input type="button" name="btnsub" value="-" onclick="myclick('-')"><br>
+    <input type="button" name="btn3" value="3" onclick="myclick('3')">
+    <input type="button" name="btn2" value="2" onclick="myclick('2')">
+    <input type="button" name="btn1" value="1" onclick="myclick('1')">
+    <input type="button" name="btnmup" value="*" onclick="myclick('*')">
+    <input type="button" name="btndiv" value="/" onclick="myclick('/')"><br>
+    <input type="button" name="btn0" value="0" onclick="myclick('0')">
+    <input type="button" name="btnpoi" value="." onclick="myclick('.')">
+    <input type="button" name="btnp1" value="(" onclick="p1('(')">
+    <input type="button" name="btnp2" value=")" onclick="p2(')')">
+    <input type="button" name="btn#" value="#" onclick="myclick('#')"><br>
+    <input type="button" name="btnlog" value="log" onclick="log()">
+    <input type="button" name="btnln" value="ln" onclick="ln()">
+    <input type="button" name="btnpi" value="Pi" onclick="pi()">
+    <input type="button" name="btnrd" value="rd" onclick="rad()">
+    <input type="button" name="btndg" value="dg" onclick="deg()"><br>
+    <input type="button" name="btnfact" value="x!" onclick="fact()">
+        <input type="button" name="btne" value="=" onclick="equalto()">
+        <input type ="button" name="btnper" value="%" onclick="percentage()">
+    <input type="button" name="btn00" value="00" onclick="myclick('00')">
+    
+</div>
+</form>
+</body>
+</html>
