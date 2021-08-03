@@ -11,11 +11,30 @@
     function myclick(a){
         myform.display.value+=a;
     }
+    function isValid(str){
+   var map=new Map();
+   map.set('{','}');
+   map.set('(',')');
+   map.set('[',']');
+   const b=[];
+   for(let i=0;i<str.length;i++){
+      if(map.has(str.charAt(i))){
+         b.push(str.charAt(i));
+      } else{
+         let pop=b.pop();
+         if(map.get(pop)!==str.charAt(i)){
+            return false;
+         }
+      }
+   }
+   return b.length===0;
+    }
+console.log(isValid(str));
     function equalto(){
         myform.display.value=eval(myform.display.value);
     }
     function ac(){
-        myform.display.value="0";
+        myform.display.value=" ";
     }
     function backspace(){
         var prevval=myform.display.value;
@@ -23,14 +42,17 @@
     }
     function sinf()
     {
+        var temp=deg(myform.display.value);
         myform.display.value=Math.sin(myform.display.value);
     }
     function cosf()
     {
+        var temp=deg(myform.display.value);
         myform.display.value=Math.cos(myform.display.value);
     }
     function tanf()
     {
+        var temp=deg(myform.display.value)
         myform.display.value=Math.tan(myform.display.value);
     }
     function square(){
@@ -84,7 +106,8 @@
     }
     function percentage(){
         var temp=myform.display.value;
-        var char=temp*100;
+        var curr=eval(temp);
+        var char=temp*100 + "%";
         myform.display.value=char;
     }
 
@@ -116,8 +139,8 @@
     <input type="button" name="btndiv" value="/" onclick="myclick('/')"><br>
     <input type="button" name="btn0" value="0" onclick="myclick('0')">
     <input type="button" name="btnpoi" value="." onclick="myclick('.')">
-    <input type="button" name="btnp1" value="(" onclick="p1('(')">
-    <input type="button" name="btnp2" value=")" onclick="p2(')')">
+    <input type="button" name="btnp1" value="(" onclick="myclick('(')">
+    <input type="button" name="btnp2" value=")" onclick="isValid('str')">
     <input type="button" name="btn#" value="#" onclick="myclick('#')"><br>
     <input type="button" name="btnlog" value="log" onclick="log()">
     <input type="button" name="btnln" value="ln" onclick="ln()">
